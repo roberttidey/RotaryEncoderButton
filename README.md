@@ -1,4 +1,4 @@
-# batter rotary encoder action button for ESP8266
+# Battery rotary encoder action button for ESP8266
 
 See schematic for hook up.
 Instructable TBA
