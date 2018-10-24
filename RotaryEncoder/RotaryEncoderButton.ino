@@ -405,7 +405,6 @@ void rotaryStatus() {
 			response += "<BR>rotaryPosition:" + String(i) + "=" + String(rotaryPosition[i]);
 			response += "<BR>rotaryDirection:" + String(i) + "=" + String(rotaryDirection[i]);
 			response += "<BR>changeCount:" + String(i) + "=" + String(changeCount[i]);
-			response += "<BR>buttonPulse:" + String(i) + "=" + String(getRotaryButtonPulse(i));
 		}
 	}
 	response += "<BR>actionString:" + actionString;
@@ -538,6 +537,13 @@ void makeActionString(int encoder) {
 			index = actionString.indexOf("$p");
 			if(index>=0) {
 				insert = String(rotaryPosition[encoder]);
+				changed = 1;
+			}
+		}
+		if(changed == 0) {
+			index = actionString.indexOf("$b");
+			if(index>=0) {
+				insert = String(buttonPulse[encoder]);
 				changed = 1;
 			}
 		}
