@@ -16,7 +16,6 @@ Instructable TBA
 - upload
 - edit
 - firmware
-- ?cmd=volumeup
 - setPosition?auth=authNo&encoder=encoderIndex&position=encoderPosition
 
 ### Config
