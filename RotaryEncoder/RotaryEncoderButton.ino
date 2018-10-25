@@ -523,98 +523,39 @@ Make action string by substituting parameters
 */
 void makeActionString(int encoder) {
 	int index;
+	int sub;
 	int changed;
+	String subs = "$e$p$d$b$l$x$y$z$u$v$t$c";
 	String insert;
 	actionString = changeActionStrings[encoder];
 	while(true) {
 		changed = 0;
-		index = actionString.indexOf("$e");
-		if(index>=0) {
-			insert = String(encoder);
-			changed = 1;
-		}
-		if(changed == 0) {
-			index = actionString.indexOf("$p");
-			if(index>=0) {
-				insert = String(rotaryPosition[encoder]);
+		for(sub = 0; sub < subs.length() - 1; sub +=2) {
+			index = actionString.indexOf(subs.substring(sub, sub + 2));
+			if(index >= 0) {
 				changed = 1;
+				switch(sub) {
+					case 0: insert = String(encoder); break; //$e
+					case 2: insert = String(rotaryPosition[encoder]); break; //$p
+					case 4: insert = String(rotaryDirection[encoder]); break; //$d
+					case 6: insert = String(buttonPulse[encoder]); break; //$b
+					case 8: insert = makeLightwaveFunction(encoder); break; //$l
+					case 10: insert = changePar1[encoder]; break; //$x
+					case 12: insert = changePar2[encoder]; break; //$y
+					case 14: insert = changePar3[encoder]; break; //$z
+					case 16: insert = changePar4[encoder]; break; //$u
+					case 18: insert = changePar5[encoder]; break; //$v
+					case 20: insert = String(changeCount[encoder]); break; //$t
+					case 22: insert = ","; break; //$c
+				}
+				if(changed) {
+					actionString = actionString.substring(0, index) + insert + actionString.substring(index+2);
+				} else {
+					break;
+				}
 			}
 		}
-		if(changed == 0) {
-			index = actionString.indexOf("$b");
-			if(index>=0) {
-				insert = String(buttonPulse[encoder]);
-				changed = 1;
-			}
-		}
-		if(changed == 0) {
-			index = actionString.indexOf("$l");
-			if(index>=0) {
-				insert = makeLightwaveFunction(encoder);
-				changed = 1;
-			}
-		}
-		if(changed == 0) {
-			index = actionString.indexOf("$d");
-			if(index>=0) {
-				insert = String(rotaryDirection[encoder]);
-				changed = 1;
-			}
-		}
-		if(changed == 0) {
-		index = actionString.indexOf("$x");
-			if(index>=0) {
-				insert = changePar1[encoder];
-				changed = 1;
-			}
-		}
-		if(changed == 0) {
-			index = actionString.indexOf("$y");
-			if(index>=0) {
-				insert = changePar2[encoder];
-				changed = 1;
-			}
-		}
-		if(changed == 0) {
-			index = actionString.indexOf("$z");
-			if(index>=0) {
-				insert = changePar3[encoder];
-				changed = 1;
-			}
-		}
-		if(changed == 0) {
-			index = actionString.indexOf("$u");
-			if(index>=0) {
-				insert = changePar4[encoder];
-				changed = 1;
-			}
-		}
-		if(changed == 0) {
-			index = actionString.indexOf("$v");
-			if(index>=0) {
-				insert = changePar5[encoder];
-				changed = 1;
-			}
-		}
-		if(changed == 0) {
-			index = actionString.indexOf("$t");
-			if(index>=0) {
-				insert = String(changeCount[encoder]);;
-				changed = 1;
-			}
-		}
-		if(changed == 0) {
-			index = actionString.indexOf("$c");
-			if(index>=0) {
-				insert = ",";
-				changed = 1;
-			}
-		}
-		if(changed) {
-			actionString = actionString.substring(0, index) + insert + actionString.substring(index+2);
-		} else {
-			break;
-		}
+		if(!changed) break;
 	}
 }
 
