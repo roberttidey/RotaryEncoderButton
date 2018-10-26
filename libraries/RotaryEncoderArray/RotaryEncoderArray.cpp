@@ -71,9 +71,9 @@ void setRotaryEncoderPins(int encoder, int pin1, int pin2, int button) {
 	_buttonDownTime[encoder]	= 0;
 	_buttonUpTime[encoder]	= 0;
 	if(_interruptEnable) {
-		attachInterrupt(_pin1[encoder], rotaryTick, CHANGE);
-		attachInterrupt(_pin2[encoder], rotaryTick, CHANGE);
-		attachInterrupt(_button[encoder], buttonTick, CHANGE);
+		attachInterrupt(pin1, rotaryTick, CHANGE);
+		attachInterrupt(pin2, rotaryTick, CHANGE);
+		if(button >=0) attachInterrupt(button, buttonTick, CHANGE);
 	}
 }
 
