@@ -38,6 +38,7 @@ Instructable TBA
 ### Install procedure
 - Uses BaseSupport library at https://github.com/roberttidey/BaseSupport
 - Edit passwords etc in BaseConfig.h
+- Uncomment FASTCONNECT in BaseConfig as required
 - Normal arduino esp8266 compile and upload
 - A simple built in file uploader (/upload) should then be used to upload the base datafiles to SPIFF
   edit.htm.gz
