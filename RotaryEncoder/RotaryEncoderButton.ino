@@ -377,7 +377,6 @@ void setupStart() {
 		digitalWrite(POWER_HOLD_PIN, 0);
 		pinMode(POWER_HOLD_PIN, OUTPUT);
 	}
-	server.begin();
 	#ifdef MQTT
 		mqttClient.setServer(mqtt_server, mqtt_port);
 	#endif
