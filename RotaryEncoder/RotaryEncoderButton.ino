@@ -341,6 +341,7 @@ void encoderChange(int encoder) {
 				if (!mqttClient.connected()) {
 					mqttConnect();
 				}
+				makeActionString(encoder);
 				mqttClient.loop();
 				strncpy(tmpString, changePar1[encoder].c_str(), 32);
 				mqttClient.publish(tmpString, actionString.c_str(), true);
