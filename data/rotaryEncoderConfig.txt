@@ -5,6 +5,7 @@ rotaryEncoderY
 0.976
 # up to 3 encoder defintions pin1, pin2, button, min, max, start, action, interval, action template, par1, par2, par3, par4, par5.
 # Use -1 for pin1 to indicate n/a
+# action 0=null,1=url get,3=udp,3=mqtt
 5,4,12,0,32,15,2,2000,$t$c!$l|LoungeLight|Bright$p,192.168.0.22,9760,R1D1,par4,par5
 -1,-1,-1,0,100,50,0,500,http://192.168.0.7/encoderChange?encoder$e&position=$p&direction=$d,par1,par2,par3,par4,par5
 -1,-1,-1,0,100,50,0,500,http://192.168.0.7/encoderChange?encoder$e&position=$p&direction=$d,par1,par2,par3,par4,par5

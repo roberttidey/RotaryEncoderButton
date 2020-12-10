@@ -43,7 +43,6 @@ WiFiUDP Udp;
 #define ACTION_GETURL 1
 #define ACTION_UDP 2
 #define ACTION_MQTT 3
-#define ACTION_LWRF 4
 
 int sleepMask = 1;
 
