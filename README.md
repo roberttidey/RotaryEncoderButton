@@ -1,7 +1,7 @@
 # Battery rotary encoder action button for ESP8266
 
 See schematic for hook up.
-Instructable TBA
+Instructable https://www.instructables.com/Rotary-Encoder-Button/
 
 ## Features
 - Rotary encoder actions web/mqtt/lightwaverf
